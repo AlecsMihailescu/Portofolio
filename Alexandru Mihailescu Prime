@@ -1,0 +1,120 @@
+//Alexandru Mihailescu
+//This program shows a menu with options that the user can choose from. It checks the nth prime number, if a number is prime and it has an exit option.
+
+#include <iostream>
+using namespace std;
+
+bool IsPrime(int); //declaring
+int Prime(int); //declaring
+int main()
+{
+    char response;
+    int n, num;
+    
+    
+    do {
+         cout << "\n\n   - Menu Options - \nF:       Find the nth prime number\nT:       Test a 	 		  value to see if it is prime\nQ:      Terminate program\n\n Option:";
+        cin >> response;
+        response = tolower (response); //added this in the end, had problems with while.
+        if (response == 't'|| response == 'T')
+        {
+            cout << "Enter A Value Greater Than Zero: ";
+            cin >> num;
+            if (num > 0)
+            {
+                if (IsPrime(num) == true)
+                    cout << "Your Number Is Prime";
+                else
+                    cout << "Your Number Is not Prime";
+                continue;
+            }
+            else
+                cout << "Enter A Value Greater Than Zero: ";
+                cin >> num;
+            continue;
+            
+        }
+            else
+            {
+                if (response == 'F' || response =='f')
+                {
+                cout << "Enter a Value Greater Than Zero: ";
+                cin >> n;
+                if (n > 0)
+                    cout << "The nth Prime Number where n is " << n << " is " << Prime(n)<< endl;
+                else 
+		     cout << "Your Number Is Invalid.";
+                    continue;
+                }
+            }
+      }while (response != 'q'); //(response !='Q' || response !='q')
+    //will not work for either Q or q when or is entered
+    
+    
+}
+// for 'T' Value
+bool IsPrime(int num)
+{
+    
+    for (int j = 2; j <= num / 2; j++)
+        if (num % j == 0)
+            return false;
+    
+    return true;
+}
+// for 'F' Value
+int Prime(int n)
+{
+    int checkprime;
+    int nthplace = 0;
+    int num = 0;
+    
+    IsPrime(num);
+    if (true)
+        for (int num = 2; num <= 10001; num++)
+        {
+            checkprime = 0;
+            
+            for (int i = 2; i <= num / 2; i++)
+            {
+                
+                if (num%i == 0)
+                {
+                    checkprime = 1;
+                    break;
+                }
+                
+            }
+            
+            if (checkprime == 0)
+                nthplace++;
+            
+            if (nthplace == n)
+                return num++;
+            
+        }
+    return num++;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
